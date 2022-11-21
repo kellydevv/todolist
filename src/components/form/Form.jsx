@@ -2,8 +2,7 @@
 import "../form/style.css";
 import React, { useState } from "react";
 
-
-//id number 1,2가 initialState로 TodoList에 있으므로 새로 추가되는 todo는 id.number가 3부터 시작되어야 함
+// id number 1,2가 initialState로 TodoList에 있으므로 새로 추가되는 todo는 id.number가 3부터 시작되어야 함
 let number = 3;
 function Form({ setTodos, todos }) {
   const initialState = { id: 0, title: "", body: "", isDone: false };
@@ -16,7 +15,7 @@ function Form({ setTodos, todos }) {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    //trim()은 문자열 양 끝의 공백을 제거함. 
+    //trim()은 문자열 양 끝의 공백을 제거함.
     if (todo.titile.trim() === "" || todo.body.trim() === "") return;
     setTodos([...todos, { ...todo, id: number }]);
     setTodo(initialState);
@@ -42,7 +41,9 @@ function Form({ setTodos, todos }) {
           value={todo.body}
           onChange={onChangeHandler}
         />
-        <button className="add-button">추가하기</button>
+        <button className="add-button">
+          추가하기
+        </button>
       </div>
     </form>
   );
