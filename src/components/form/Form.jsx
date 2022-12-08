@@ -1,6 +1,7 @@
 //투두리스트 입력창
 import "../form/style.css";
 import React, { useState } from "react";
+import styled from "styled-components";
 
 // id number 1,2가 initialState로 TodoList에 있으므로 새로 추가되는 todo는 id.number가 3부터 시작되어야 함
 let number = 3;
@@ -23,30 +24,64 @@ function Form({ setTodos, todos }) {
   };
 
   return (
-    <form className="add-form" onSubmit={onSubmitHandler}>
-      <div className="input-group">
-        <label className="form-label">제목</label>
-        <input
-          className="add-input"
+    <StAddForm onSubmitHandler={onSubmitHandler} type="form">
+      <StInputGroup>
+        <StFormLabel>제목</StFormLabel>
+        <StAddForm
           type="text"
           name="title"
           value={todo.title}
           onChange={onChangeHandler}
         />
-        <label className="form-label">내용</label>
-        <input
-          className="add-input"
-          type="text"
+        <StFormLabel>내용</StFormLabel>
+<StAddForm type="text"
           name="body"
           value={todo.body}
-          onChange={onChangeHandler}
-        />
-        <button className="add-button">
-          추가하기
-        </button>
-      </div>
-    </form>
+          onChange={onChangeHandler}/>
+        <StAddButton>추가하기</StAddButton>
+      </StInputGroup>
+    </StAddForm>
   );
 }
 
 export default Form;
+
+const StAddForm = styled.div`
+  background-color: #eee;
+  border-radius: 12px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  gap: 20px;
+`;
+
+const StInputGroup = styled.input`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
+const StFormLabel = styled.label`
+  font-size: 16px;
+  font-weight: 700;
+`;
+
+const StAddInput = styled.input`
+  height: 40px;
+  width: 240px;
+  border: none;
+  border-radius: 12px;
+  padding: 0 12px;
+`;
+
+const StAddButton = styled.button`
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+  background-color: teal;
+  width: 140px;
+  color: #fff;
+  font-weight: 700;
+`;
